@@ -65,8 +65,6 @@ This matters because the most common retail trading-bot self-deception is to ble
 
 Earlier 16-day headline numbers (84 trades, PF 1.64, +$1,028) were independently reproduced from logs by an outside reviewer (Codex, May 10 2026). The current 20-day headline has not yet been independently re-reviewed.
 
-![Terminal output showing the structured runtime audit + order event stream — OCA orders, openTrades, openPositions data flowing through the bot during a live session](images/terminal_runtime_audit_stream.jpg)
-
 ## 5. Architecture overview
 
 ```
