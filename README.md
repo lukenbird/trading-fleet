@@ -45,33 +45,22 @@ failure modes.
 ```mermaid
 flowchart TB
     IB[IB Gateway / IBC paper]
-    subgraph Runtime
-        BS[bootstrap]
-        SAF[safety + watchdog]
-        PRE[preplace + queueing]
-        EX[exits + bracket lifecycle]
-    end
-    subgraph Engine
-        ENG[engine_core P&L / sizing / fills]
-        STRAT[strategy ORB+VWAP]
-    end
-    subgraph Reporting
-        STACK[cockpit → edge evidence → daily brief → closeout → robustness]
-    end
-    subgraph Research
-        MIR[decision-stream mirror 8 iter]
-        ATLAS[runtime-parity replay ATLAS V1]
-        FIL[fault-injection lab 34 scenarios]
-        CAL[live-calibrated robustness lab]
-    end
-    IB <--> BS
-    BS --> ENG --> STRAT --> PRE --> EX --> IB
-    SAF -.- BS
+
+    IB <--> BS[bootstrap]
+    BS --> ENG[engine_core: P&L / sizing / fills]
+    ENG --> STRAT[strategy: ORB+VWAP]
+    STRAT --> PRE[preplace + queueing]
+    PRE --> EX[exits + bracket lifecycle]
+    EX --> IB
+
+    SAF[safety + watchdog] -.- BS
     SAF -.- EX
-    ENG --> STACK
-    ENG -. logs .-> MIR
-    ENG -. logs .-> ATLAS
-    ENG -. logs .-> CAL
+
+    ENG --> STACK[reporting: cockpit → edge evidence → daily brief → closeout → robustness]
+    ENG -. logs .-> MIR[decision-stream mirror]
+    ENG -. logs .-> ATLAS[runtime-parity replay ATLAS V1]
+    ENG -. logs .-> FIL[fault-injection lab]
+    ENG -. logs .-> CAL[live-calibrated robustness lab]
 ```
 
 *Solid arrows: synchronous data/control flow. Dotted arrows: asynchronous coupling, log streams, or safety hooks.*
