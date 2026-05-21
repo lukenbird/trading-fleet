@@ -10,7 +10,7 @@ failure modes.
 > what to claim are mine. Code typing, test scaffolding, and prose drafting are
 > AI-executed under my review.
 
-![Mission Control v6.1 — home dashboard during a live session](docs/images/mission_control_home_dashboard.jpg)
+![Mission Control v6.1 — home dashboard, fixture-mode render showing UI structure](docs/images/mission_control_home_dashboard.jpg)
 
 ---
 
